@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <title>QR Code Generator</title>
+    <style>
+      /* Add some styling for the page */
+      body {
+        font-family: sans-serif;
+      }
+      #qr-code {
+        width: 256px;
+        height: 256px;
+      }
+      #text-input {
+        width: 50%;
+        font-size: 1.2em;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+      }
+      #generate-button {
+        font-size: 1.2em;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: lightblue;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Add a text input for the user to enter text to encode in the QR code -->
+    <input id="text-input" type="text" placeholder="Enter text to encode">
+    <!-- Add a button to generate the QR code -->
+    <button id="generate-button">Generate QR Code</button>
+    <!-- Add an image element to display the QR code -->
+    <br><br>
+    <img id="qr-code" src="" alt="QR Code">
+    <!-- Add a script to generate the QR code when the button is clicked -->
+    <script>
+      // Get references to the text input and QR code image
+      const textInput = document.getElementById('text-input');
+      const qrCode = document.getElementById('qr-code');
+      // Get a reference to the generate button
+      const generateButton = document.getElementById('generate-button');
+      // Add an event listener to the button to generate the QR code when clicked
+      generateButton.addEventListener('click', () => {
+        // Get the text from the input field
+        const text = textInput.value;
+        // Set the src attribute of the QR code image to a URL that generates a QR code for the specified text
+        qrCode.src = `https://api.qrserver.com/v1/create-qr-code/?data=${text}&size=256x256`;
+      });
+    </script>
+  </body>
+</html>
